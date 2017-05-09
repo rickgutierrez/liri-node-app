@@ -1,15 +1,13 @@
-// Node module imports needed to run the functions
-	var fs = require("fs"); //reads and writes files
+// Node 
+	var fs = require("fs"); 
 	var request = require("request");
 	var keys = require("./keys.js");
 	var twitter = require("twitter");
 	var spotify = require ("spotify");
 	var liriArgument = process.argv[2];
-// ---------------------------------------------------------------------------------------------------------------
-	
-// ---------------------------------------------------------------------------------------------------------------
+
 // Functions
-	// Movie function, uses the Request module to call the OMDB api
+	// OMDB api
 	function movieThis(){
 		var movie = process.argv[3];
 		if(!movie){
@@ -31,7 +29,7 @@
 				"Actors: " + movieObject.Actors+"\r\n"+
 				"Rotten Tomatoes Rating: " + movieObject.tomatoRating+"\r\n"+
 				"Rotten Tomatoes URL: " + movieObject.tomatoURL + "\r\n" + 
-				"------------------------------ fin ------------------------------" + "\r\n";
+				"------------------------------ end ------------------------------" + "\r\n";
 				console.log(movieResults);
 				log(movieResults); //  log function
 			} else {
@@ -56,7 +54,7 @@
 		client.get("statuses/user_timeline/", params, function(error, data, response){
 			if (!error) {
 				for(var i = 0; i < data.length; i++) {
-					//console.log(response); // Show the full response in the terminal
+					//console.log(response); 
 					var twitterResults = 
 					"@" + data[i].user.screen_name + ": " + 
 					data[i].text + "\r\n" + 
@@ -71,7 +69,7 @@
 			}
 		});
 	}
-					//Spotify api
+	//Spotify api
 	function spotifyThisSong(songName) {
 		var songName = process.argv[3];
 		if(!songName){
